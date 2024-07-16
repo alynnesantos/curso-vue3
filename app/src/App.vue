@@ -1,6 +1,6 @@
 <template>
   <!-- V-if -->
-  <TheHeader v-if="showHeader"/>
+  <TheHeader v-if="showHeader" />
 
   <!-- V-show -->
   <div v-show="showName">
@@ -13,18 +13,19 @@
   <div v-else-if="acessLevel === 'marketing'">Usuário Marketing</div>
   <div v-else>Usuário User</div>
 
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- V-for -->
+  <div v-for="(obj, index) in todos" v-bind:key="obj.id" class="todos-item">
+    {{index}} - {{ obj.title }}
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import TheHeader from './components/TheHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     TheHeader
   },
   data() {
@@ -34,12 +35,55 @@ export default {
       lastname: 'Snow',
       showName: false,
       acessLevel: '',
+      todos: [
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "delectus aut autem",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "quis ut nam facilis et officia qui",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "fugiat veniam minus",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 4,
+          "title": "et porro tempora",
+          "completed": true
+        },
+        {
+          "userId": 1,
+          "id": 5,
+          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+          "completed": false
+        }
+      ]
     }
   }
 }
 </script>
 
 <style>
+
+.todos-item {
+  background: #10791e;
+  color: #fff;
+  border: 7px solid #cccccc7e;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  display: flex;
+
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,5 +91,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} 
 </style>

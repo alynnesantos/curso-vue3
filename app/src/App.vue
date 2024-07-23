@@ -13,10 +13,15 @@
   <div v-else-if="acessLevel === 'marketing'">Usuário Marketing</div>
   <div v-else>Usuário User</div>
 
-  <!-- V-for -->
-  <div v-for="(obj, index) in todos" v-bind:key="obj.id" class="todos-item">
-    {{index}} - {{ obj.title }}
+  <!-- V-for and V-bind-->
+  <div>
+    <div v-for="(obj, index) in todos" v-bind:key="obj.id" class="todos-item">
+      <img v-if="obj.imgScr" v-bind:src="obj.imgScr">
+      {{ index }} - {{ obj.title }}
+    </div>
   </div>
+
+  <!-- v-bind:src or :src -->
 
 </template>
 
@@ -40,13 +45,15 @@ export default {
           "userId": 1,
           "id": 1,
           "title": "delectus aut autem",
-          "completed": false
+          "completed": false,
+          "imgScr": 'https://via.placeholder.com/200',
         },
         {
           "userId": 1,
           "id": 2,
           "title": "quis ut nam facilis et officia qui",
-          "completed": false
+          "completed": false,
+          "imgScr": 'https://via.placeholder.com/200',
         },
         {
           "userId": 1,
@@ -73,7 +80,6 @@ export default {
 </script>
 
 <style>
-
 .todos-item {
   background: #10791e;
   color: #fff;
@@ -84,6 +90,7 @@ export default {
   display: flex;
 
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -91,5 +98,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-} 
+}
 </style>

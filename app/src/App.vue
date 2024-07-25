@@ -25,6 +25,7 @@
 
     <br>
     <hr>
+    Aula 07
     <h1 :class="classVar">
       Curso vue 3
     </h1>
@@ -45,6 +46,7 @@
     <br>
     <hr>
 
+    Aula 08
     <div>Two-way data binding - v-model -> formulários</div>
 
     <br>
@@ -95,6 +97,28 @@
       Amarelo
       <br> {{ colors }}
     </div>
+
+    <br>
+    <hr>
+
+    <!-- V-on -->
+    Aula 09
+    <div>
+      <br><!-- or @click -->
+      <button v-on:click.once="onClick()">Enviar</button>
+    </div>
+    <br>
+      <!-- or -->
+    <div @mouseover="onMouseOver()" @mouseout="onMouseOut()">
+      Mouse over
+    </div>
+    <br><br>
+
+    <form action="https://google.com"
+    @submit.prevent="onSubmit">
+      <input type="text" @keyup="onKeyUp">
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </template>
 
@@ -155,6 +179,27 @@ export default {
       newsletter: '',
       contract: '',
       colors: []
+    }
+  },
+  methods: {
+    onClick() {
+      console.log('click');
+    },
+
+    onMouseOver() {
+      console.log('mouse over');
+    },
+
+    onMouseOut() {
+      console.log('mouse out');
+    },
+
+    onSubmit() {
+      console.log('submit');
+    },
+
+    onKeyUp() {
+      console.log('keyup');
     }
   }
 }

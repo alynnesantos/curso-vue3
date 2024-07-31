@@ -108,17 +108,34 @@
       <button v-on:click.once="onClick()">Enviar</button>
     </div>
     <br>
-      <!-- or -->
+    <!-- or -->
     <div @mouseover="onMouseOver()" @mouseout="onMouseOut()">
       Mouse over
     </div>
     <br><br>
 
-    <form action="https://google.com"
-    @submit.prevent="onSubmit">
+    <form action="https://google.com" @submit.prevent="onSubmit">
       <input type="text" @keyup="onKeyUp">
       <button type="submit">Enviar</button>
     </form>
+  </div>
+
+  <br>
+  <!-- Propriedade computada -->
+  Aula 10
+  <p>{{ fullName }}</p>
+  <h2>Todos em aberto</h2>
+  <div v-for="todo in incompleteTodos" :key="todo.id">
+    {{ todo.title }}
+  </div>
+  <h2>Todos completas</h2>
+  <div v-for="todo in completedTodos" :key="todo.id">
+    {{ todo.title }}
+  </div>
+  <h2>Todos</h2>
+  <div v-for="todo in todos" :key="todo.id">
+    <input v-model="todo.completed" type="checkbox">
+    {{ todo.title }}
   </div>
 </template>
 
@@ -178,7 +195,11 @@ export default {
       sports: '',
       newsletter: '',
       contract: '',
-      colors: []
+      colors: [],
+      user: {
+        first_name: 'Alynne',
+        last_name: 'Santos',
+      },
     }
   },
   methods: {
@@ -201,7 +222,19 @@ export default {
     onKeyUp() {
       console.log('keyup');
     }
-  }
+  },
+
+  computed: {
+    fullName() {
+      return `${this.user.first_name} ${this.user.last_name}`
+    },
+    incompleteTodos() {
+      return this.todos.filter(todo => !todo.completed);
+    },
+    completedTodos() {
+      return this.todos.filter(todo => todo.completed);
+    }
+  },
 }
 </script>
 

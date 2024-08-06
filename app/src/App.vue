@@ -112,15 +112,15 @@
     <div @mouseover="onMouseOver()" @mouseout="onMouseOut()">
       Mouse over
     </div>
-    <br><br>
+    <br>
 
     <form action="https://google.com" @submit.prevent="onSubmit">
       <input type="text" @keyup="onKeyUp">
       <button type="submit">Enviar</button>
     </form>
   </div>
+  <hr>
 
-  <br>
   <!-- Propriedade computada -->
   Aula 10
   <p>{{ fullName }}</p>
@@ -137,6 +137,30 @@
     <input v-model="todo.completed" type="checkbox">
     {{ todo.title }}
   </div>
+  <br>
+  <hr>
+  <!-- Watch -->
+  Aula11
+  <br>
+  <input type="text" v-model="name">
+  <br>
+  {{ name }}
+  <br><br><br>
+
+  <select v-model="pageCount">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+  </select>
+  <br>
+  {{ pageCount }}
+  <br><br>
+  <input type="text" v-model="user.first_name">
+  <br><br>
+  <input type="text" v-model="user.last_name">
+  <br><br>
+  {{ user.first_name }} {{ user.last_name }}
+
 </template>
 
 <script>
@@ -197,9 +221,10 @@ export default {
       contract: '',
       colors: [],
       user: {
-        first_name: 'Alynne',
-        last_name: 'Santos',
+        first_name: '',
+        last_name: '',
       },
+      pageCount: 5,
     }
   },
   methods: {
@@ -221,6 +246,15 @@ export default {
 
     onKeyUp() {
       console.log('keyup');
+    },
+
+    saveUserName() {
+      console.log('Ajax');
+      console.log(this.name);
+    },
+
+    changePage() {
+      console.log(this.pageCount);
     }
   },
 
@@ -234,6 +268,24 @@ export default {
     completedTodos() {
       return this.todos.filter(todo => todo.completed);
     }
+  },
+
+  watch: {
+    name(vl) {
+      if (vl.length >= 3) {
+        this.saveUserName();
+      }
+    },
+    pageCount() {
+      this.changePage();
+    },
+
+    user: {
+      handler() {
+        console.log('user alterado');
+      },
+      deep: true
+    },
   },
 }
 </script>

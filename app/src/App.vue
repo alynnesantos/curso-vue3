@@ -25,7 +25,7 @@
 
     <br>
     <hr>
-    Aula 07
+    <h2>Aula 07</h2>
     <h1 :class="classVar">
       Curso vue 3
     </h1>
@@ -46,7 +46,7 @@
     <br>
     <hr>
 
-    Aula 08
+    <h2>Aula 08</h2>
     <div>Two-way data binding - v-model -> formulários</div>
 
     <br>
@@ -102,7 +102,7 @@
     <hr>
 
     <!-- V-on -->
-    Aula 09
+    <h2>Aula 09</h2>
     <div>
       <br><!-- or @click -->
       <button v-on:click.once="onClick()">Enviar</button>
@@ -118,48 +118,59 @@
       <input type="text" @keyup="onKeyUp">
       <button type="submit">Enviar</button>
     </form>
-  </div>
-  <hr>
+    <hr>
 
-  <!-- Propriedade computada -->
-  Aula 10
-  <p>{{ fullName }}</p>
-  <h2>Todos em aberto</h2>
-  <div v-for="todo in incompleteTodos" :key="todo.id">
-    {{ todo.title }}
-  </div>
-  <h2>Todos completas</h2>
-  <div v-for="todo in completedTodos" :key="todo.id">
-    {{ todo.title }}
-  </div>
-  <h2>Todos</h2>
-  <div v-for="todo in todos" :key="todo.id">
-    <input v-model="todo.completed" type="checkbox">
-    {{ todo.title }}
-  </div>
-  <br>
-  <hr>
-  <!-- Watch -->
-  Aula11
-  <br>
-  <input type="text" v-model="name">
-  <br>
-  {{ name }}
-  <br><br><br>
+    <!-- Propriedade computada -->
+    <h2>Aula 10</h2>
+    <p>{{ fullName }}</p>
+    <h2>Todos em aberto</h2>
+    <div v-for="todo in incompleteTodos" :key="todo.id">
+      {{ todo.title }}
+    </div>
+    <h2>Todos completas</h2>
+    <div v-for="todo in completedTodos" :key="todo.id">
+      {{ todo.title }}
+    </div>
+    <h2>Todos</h2>
+    <div v-for="todo in todos" :key="todo.id">
+      <input v-model="todo.completed" type="checkbox">
+      {{ todo.title }}
+    </div>
+    <br>
+    <hr>
+    <!-- Watch -->
+    <h2>Aula 11</h2>
+    <input type="text" v-model="name">
+    <br><br>
+    {{ name }}
+    <br><br><br>
 
-  <select v-model="pageCount">
-    <option value="5">5</option>
-    <option value="10">10</option>
-    <option value="15">15</option>
-  </select>
-  <br>
-  {{ pageCount }}
-  <br><br>
-  <input type="text" v-model="user.first_name">
-  <br><br>
-  <input type="text" v-model="user.last_name">
-  <br><br>
-  {{ user.first_name }} {{ user.last_name }}
+    <select v-model="pageCount">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+    <br>
+    {{ pageCount }}
+    <br><br>
+    <input type="text" v-model="user.first_name">
+    <br><br>
+    <input type="text" v-model="user.last_name">
+    <br><br>
+    {{ user.first_name }} {{ user.last_name }}
+
+    <br>
+    <hr>
+    <!-- Ciclo de vida -->
+    <h2>Aula 12</h2>
+    <h1>Hello World</h1>
+    <br>
+    <input type="text" v-model="name">
+    {{ name }}
+    <br>
+    <TheHeader v-if="showHeader" />
+    <button @click="showHeader = !showHeader">Ativar e desativar header</button>
+  </div>
 
 </template>
 
@@ -215,7 +226,7 @@ export default {
       classVar: 'title',
       isHome: true,
       pClass: ['text', 'text-home'],
-      name: '',
+      name: 'Alynne Santos',
       sports: '',
       newsletter: '',
       contract: '',
@@ -227,6 +238,34 @@ export default {
       pageCount: 5,
     }
   },
+
+  // beforeUpdate() {
+  //   console.log('beforeUpdate', this.name)
+  // },
+  // updated() {
+  //   console.log('updated', this.name)
+  // },
+  // beforeCreate() {
+  //   console.log('beforeCreate');
+  //   console.log('Estado:', this.name);
+  //   console.log('DOM:', this.$el);
+  // },
+  // created() {
+  //   console.log('created');
+  //   console.log('Estado:', this.name);
+  //   console.log('DOM:', this.$el);
+  // },
+  // beforeMount() {
+  //   console.log('beforeMount');
+  //   console.log('Estado:', this.name);
+  //   console.log('DOM:', this.$el);
+  // },
+  // mounted() {
+  //   console.log('mounted');
+  //   console.log('Estado:', this.name);
+  //   console.log('DOM:', this.$el);
+  // },
+
   methods: {
     onClick() {
       console.log('click');
@@ -255,7 +294,7 @@ export default {
 
     changePage() {
       console.log(this.pageCount);
-    }
+    },
   },
 
   computed: {
@@ -279,7 +318,6 @@ export default {
     pageCount() {
       this.changePage();
     },
-
     user: {
       handler() {
         console.log('user alterado');

@@ -1,46 +1,21 @@
 <template>
   <div>
-<<<<<<< HEAD
     <h1 class="card">Vue 3</h1>
     <BaseAlert 
     :variant="variant">
       {{ text }}
     </BaseAlert>
-=======
-    <!-- Componentes slot -->
-    <h2>Aula 13 - Componentes slot</h2>
-    <div>
-      <TheHeader>
-        <template v-slot:title>
-          Home
-        </template>
-        <template v-slot:description>
-          <p>asdsdasdsadsa</p>
-        </template>
-        Content do header - menu
-      </TheHeader>
-    </div>
->>>>>>> parent of 2870a96 (Scoped e global CSS)
   </div>
+</template>
 
-<<<<<<< HEAD
+<script>
 import BaseAlert from '@/components/BaseAlert.vue';
 export default {
   name: 'App',
   components: {
     BaseAlert
-=======
-</template>
-
-<script>
-import TheHeader from './components/TheHeader.vue';
-
-export default {
-  name: 'App',
-  components: {
-    TheHeader
->>>>>>> parent of 2870a96 (Scoped e global CSS)
   },
+
   data() {
     return {
       variant: 'success',

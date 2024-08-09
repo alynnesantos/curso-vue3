@@ -1,10 +1,16 @@
 <template>
   <div>
     <h1 class="card">Vue 3</h1>
-    <BaseAlert 
-    :variant="variant">
+    <BaseAlert v-if="showAlert" :variant="variant" @close="onClose()">
       {{ text }}
     </BaseAlert>
+    <!-- <PAI> -> De cima pra baixo -> PROPS
+      <FILHO>
+        <NETO>
+          -> Debaixo pra cima -> emit-event
+        </NETO>
+      </FILHO>
+    </PAI> -->
   </div>
 </template>
 
@@ -19,11 +25,16 @@ export default {
   data() {
     return {
       variant: 'success',
-      text: 'Seu formulário foi enviado com sucesso!'
+      text: 'Seu formulário foi enviado com sucesso!',
+      showAlert: 'true'
     }
   },
 
   methods: {
+    onClose() {
+      this.showAlert = false
+      console.log('on close');
+    },
   },
 
   computed: {

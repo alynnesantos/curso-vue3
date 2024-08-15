@@ -1,7 +1,6 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link :to="dynamicRoute">Services</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/users/10">Users</router-link>
   </nav>
@@ -12,7 +11,6 @@
   export default {
     data() {
       return {
-        dynamicRoute: {name: 'services'}
       }
     }
   }

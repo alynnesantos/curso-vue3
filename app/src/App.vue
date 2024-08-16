@@ -4,16 +4,30 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/users/10">Users</router-link>
   </nav>
+  <button @click="updateUser()">
+    Atualizar perfil
+  </button>
   <router-view />
+
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+    updateUser() {
+      const newUser = {
+        first_name: 'Alynne',
+        last_name: 'Nunes',
+        email: 'algumacoisa@vue.com'
       }
+      this.$store.commit('storeUser', newUser)
     }
   }
+}
 </script>
 
 <style>

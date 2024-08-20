@@ -1,18 +1,21 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/users/10">Users</router-link>
-  </nav>
+  <AppProducts />
+  <br><br><br><br>
+  <pre>
+    {{ $store.state.cart }}
+  </pre>
   <button @click="updateUser()">
     Atualizar perfil
   </button>
-  <router-view />
-
 </template>
 
 <script>
+import AppProducts from './components/Products/AppProducts.vue'
 export default {
+  name: 'App',
+  components: {
+    AppProducts
+  },
   data() {
     return {
     }
@@ -35,7 +38,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
